@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Inventory Management</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+background:#f2f2f2;
+}
+
+table{
+margin:auto;
+border-collapse:collapse;
+width:60%;
+}
+
+th,td{
+border:1px solid black;
+padding:10px;
+}
+
+button{
+padding:6px 12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Product Inventory Management</h2>
+
+Product Name :
+<input type="text" id="pname">
+
+Quantity :
+<input type="number" id="qty">
+
+Price :
+<input type="number" id="price">
+
+<br><br>
+
+<button onclick="addProduct()">Add Product</button>
+
+<br><br>
+
+<table>
+
+<tr>
+<th>Product</th>
+<th>Quantity</th>
+<th>Price</th>
+<th>Action</th>
+</tr>
+
+<tbody id="table"></tbody>
+
+</table>
+
+<script>
+
+function addProduct(){
+
+var name=document.getElementById("pname").value;
+var qty=document.getElementById("qty").value;
+var price=document.getElementById("price").value;
+
+if(name=="" || qty=="" || price==""){
+alert("Enter all details");
+return;
+}
+
+var table=document.getElementById("table");
+
+var row=table.insertRow();
+
+row.insertCell(0).innerHTML=name;
+row.insertCell(1).innerHTML=qty;
+row.insertCell(2).innerHTML=price;
+
+var btn=document.createElement("button");
+btn.innerHTML="Delete";
+
+btn.onclick=function(){
+row.remove();
+};
+
+row.insertCell(3).appendChild(btn);
+
+document.getElementById("pname").value="";
+document.getElementById("qty").value="";
+document.getElementById("price").value="";
+
+}
+
+</script>
+
+</body>
+</html>
